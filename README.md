@@ -20,24 +20,33 @@ a Discord channel using a webhook link.
 # System architecture
 * The system follows three simple steps: sense the temperature, decide with the rule, and act by switching
 the LED and sending the alert.
-Temperature sensor
-measures the
-temperature
-Raspberry Pi Pico W
-reads temperature,
-checks the rule
-LED (or fan/buzzer)
-on when too hot,
-off when OK
-reading on / off
-Wi-Fi router
-and the Internet
-Discord channel
-shows the alert
-Wi-Fi (only when too hot)
-webhook link
-INPUT (sense) PROCESSING (decide) OUTPUT (act)
-NETWORK ALERT (cloud)
+```mermaid
+graph TD
+    subgraph INPUT [INPUT (sense)]
+        Sensor[Temperature sensor<br>measures the temperature]
+    end
+
+    subgraph PROCESSING [PROCESSING (decide)]
+        Pico[Raspberry Pi Pico W<br>reads temperature,<br>checks the rule]
+    end
+
+    subgraph OUTPUT [OUTPUT (act)]
+        Actuator[LED (or fan/buzzer)<br>on when too hot,<br>off when OK]
+    end
+
+    subgraph NETWORK [NETWORK]
+        Router[Wi-Fi router<br>and the Internet]
+    end
+
+    subgraph ALERT [ALERT (cloud)]
+        Discord[Discord channel<br>shows the alert]
+    end
+
+    Sensor -->|reading| Pico
+    Pico -->|on/off| Actuator
+    Pico -->|Wi-Fi (only when too hot)| Router
+    Router -->|webhook link| Discord
+
 *Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
 through the webhook link.
 
