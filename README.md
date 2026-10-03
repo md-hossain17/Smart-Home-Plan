@@ -38,13 +38,13 @@ Wi-Fi (only when too hot)
 webhook link
 INPUT (sense) PROCESSING (decide) OUTPUT (act)
 NETWORK ALERT (cloud)
-Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
+*Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
 through the webhook link.
 | Block | | What it does |
-| :--- | :--- | :--- |
-| Input: temperature sensor | | Measures the temperature and sends the reading to the Pico W. | Processing: Pico W | Reads the sensor, checks if the temperature is above 30°C, and
-decides what to do. | Output: LED | Turns on above 30°C and off again when the temperature drops
-below 30°C. | Network: Wi-Fi + webhook | Carries the alert message from the Pico W to the Discord
+| :--- | :--- |
+| **Input: temperature sensor** | | Measures the temperature and sends the reading to the Pico W. | **Processing: Pico W** | Reads the sensor, checks if the temperature is above 30°C, and
+decides what to do. | **Output: LED** | Turns on above 30°C and off again when the temperature drops
+below 30°C. | **Network: Wi-Fi + webhook** | Carries the alert message from the Pico W to the Discord
 channel. |
 What happens each time
 1. The sensor measures the temperature.
