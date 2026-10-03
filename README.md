@@ -41,7 +41,7 @@ NETWORK ALERT (cloud)
 *Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
 through the webhook link.
 
-| Block | | What it does |
+| Block  | What it does |
 | :--- | :--- |
 | **Input: temperature sensor** | | Measures the temperature and sends the reading to the Pico W. | 
 | **Processing: Pico W** | Reads the sensor, checks if the temperature is above 30°C, and
@@ -50,6 +50,7 @@ decides what to do. |
 below 30°C. | 
 | **Network: Wi-Fi + webhook** | Carries the alert message from the Pico W to the Discord
 channel. |
+
 What happens each time
 1. The sensor measures the temperature.
 2. The Pico W reads it and compares it with the 30°C limit.
