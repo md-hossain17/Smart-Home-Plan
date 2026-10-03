@@ -20,7 +20,7 @@ a Discord channel using a webhook link.
 # System architecture
 * The system follows three simple steps: sense the temperature, decide with the rule, and act by switching
 the LED and sending the alert.
-``mermaid
+```mermaid
 graph TD
     subgraph IN [INPUT (sense)]
         Sensor[Temperature sensor]
@@ -46,6 +46,8 @@ graph TD
     Pico -->|on/off| Actuator
     Pico -->|Wi-Fi only when too hot| Router
     Router -->|webhook link| Discord
+```
+  
 
 *Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
 through the webhook link.
