@@ -40,6 +40,7 @@ INPUT (sense) PROCESSING (decide) OUTPUT (act)
 NETWORK ALERT (cloud)
 *Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
 through the webhook link.
+
 | Block | | What it does |
 | :--- | :--- |
 | **Input: temperature sensor** | | Measures the temperature and sends the reading to the Pico W. | **Processing: Pico W** | Reads the sensor, checks if the temperature is above 30°C, and
