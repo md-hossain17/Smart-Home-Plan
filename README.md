@@ -20,31 +20,31 @@ a Discord channel using a webhook link.
 # System architecture
 * The system follows three simple steps: sense the temperature, decide with the rule, and act by switching
 the LED and sending the alert.
-```mermaid
+* ``mermaid
 graph TD
-    subgraph INPUT [INPUT (sense)]
-        Sensor[Temperature sensor<br>measures the temperature]
+    subgraph IN [INPUT (sense)]
+        Sensor[Temperature sensor]
     end
 
-    subgraph PROCESSING [PROCESSING (decide)]
-        Pico[Raspberry Pi Pico W<br>reads temperature,<br>checks the rule]
+    subgraph PROC [PROCESSING (decide)]
+        Pico[Raspberry Pi Pico W]
     end
 
-    subgraph OUTPUT [OUTPUT (act)]
-        Actuator[LED (or fan/buzzer)<br>on when too hot,<br>off when OK]
+    subgraph OUT [OUTPUT (act)]
+        Actuator[LED or fan/buzzer]
     end
 
-    subgraph NETWORK [NETWORK]
-        Router[Wi-Fi router<br>and the Internet]
+    subgraph NET [NETWORK]
+        Router[Wi-Fi router and Internet]
     end
 
-    subgraph ALERT [ALERT (cloud)]
-        Discord[Discord channel<br>shows the alert]
+    subgraph AL [ALERT (cloud)]
+        Discord[Discord channel]
     end
 
     Sensor -->|reading| Pico
     Pico -->|on/off| Actuator
-    Pico -->|Wi-Fi (only when too hot)| Router
+    Pico -->|Wi-Fi only when too hot| Router
     Router -->|webhook link| Discord
 
 *Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
@@ -57,12 +57,12 @@ through the webhook link.
 | **Output: LED** | Turns on above 30°C and off again when the temperature drops below 30°C. | 
 | **Network: Wi-Fi + webhook** | Carries the alert message from the Pico W to the Discord channel. |
 
-What happens each time
+* What happens each time
 1. The sensor measures the temperature.
 2. The Pico W reads it and compares it with the 30°C limit.
 3. Above 30°C: the LED turns on and the alert is sent to Discord.
 4. Below 30°C: the LED stays off.
 5. The Pico W waits a couple of seconds and repeats.
-That's it
-One sensor, one output, one rule, one alert. This covers the basic idea of the assignment in the simplest
+# That's it
+* One sensor, one output, one rule, one alert. This covers the basic idea of the assignment in the simplest
 way possible.
