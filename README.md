@@ -20,17 +20,18 @@ a Discord channel using a webhook link.
 # System architecture
 * The system follows three simple steps: sense the temperature, decide with the rule, and act by switching
 the LED and sending the alert.
+
 ```mermaid
 graph TD
-    subgraph IN [INPUT (sense)]
+    subgraph IN ["INPUT (sense)"]
         Sensor[Temperature sensor]
     end
 
-    subgraph PROC [PROCESSING (decide)]
+    subgraph PROC ["PROCESSING (decide)"]
         Pico[Raspberry Pi Pico W]
     end
 
-    subgraph OUT [OUTPUT (act)]
+    subgraph OUT ["OUTPUT (act)"]
         Actuator[LED or fan/buzzer]
     end
 
@@ -38,7 +39,7 @@ graph TD
         Router[Wi-Fi router and Internet]
     end
 
-    subgraph AL [ALERT (cloud)]
+    subgraph AL ["ALERT (cloud)"]
         Discord[Discord channel]
     end
 
@@ -46,8 +47,7 @@ graph TD
     Pico -->|on/off| Actuator
     Pico -->|Wi-Fi only when too hot| Router
     Router -->|webhook link| Discord
-```
-  
+``` 
 
 *Figure 1: System architecture. The LED reacts directly on the Pico. The Discord alert travels over Wi-Fi and the Internet
 through the webhook link.
