@@ -20,7 +20,7 @@ a Discord channel using a webhook link.
 # System architecture
 * The system follows three simple steps: sense the temperature, decide with the rule, and act by switching
 the LED and sending the alert.
-* ``mermaid
+``mermaid
 graph TD
     subgraph IN [INPUT (sense)]
         Sensor[Temperature sensor]
