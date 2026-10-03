@@ -43,7 +43,7 @@ through the webhook link.
 
 | Block  | What it does |
 | :--- | :--- |
-| **Input: temperature sensor** | | Measures the temperature and sends the reading to the Pico W. | 
+| **Input: temperature sensor** | Measures the temperature and sends the reading to the Pico W. | 
 | **Processing: Pico W** | Reads the sensor, checks if the temperature is above 30°C, and decides what to do. | 
 | **Output: LED** | Turns on above 30°C and off again when the temperature drops below 30°C. | 
 | **Network: Wi-Fi + webhook** | Carries the alert message from the Pico W to the Discord channel. |
